@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Hey developer. If you're reading the source, you're exactly who I made this for. Try typing hello() in the console. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PROJECT 001: An Interesting Discovery</title>
+<meta name="description" content="A short research briefing. About a minute, no sign-up.">
+<meta name="theme-color" content="#101114">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PROJECT 001: An Interesting Discovery">
+<meta property="og:description" content="A short research briefing for one developer. About a minute.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%A2%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--d:#101114;--d2:#1a1c22;--dl:#2a2d36;--acc:#5dffb0;--dt:#d9dde6;--dm:#7d8494;--w:#f7f5f0;--wi:#23201b;--wm:#6f685c;--wa:#c2410c;--wl:#e3ddd0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--d);color:var(--dt);font:400 16px/1.65 Inter,"DM Sans",system-ui,sans-serif;transition:background 1.6s ease,color 1.6s ease}
+body.warm{background:var(--w);color:var(--wi)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;transition:opacity 1.6s;background:linear-gradient(rgba(93,255,176,.04) 50%,transparent 50%) 0 0/100% 4px}
+body.warm::before{opacity:0}
+main{max-width:38rem;margin:0 auto;padding:2rem 1.4rem;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+section{display:none}
+section.on{display:block;animation:in2 .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes in{from{opacity:0}to{opacity:1}}
+.mono{font-family:"IBM Plex Mono",monospace}
+.tag{font:500 .8rem "IBM Plex Mono",monospace;color:var(--acc);margin-bottom:1.4rem}
+.tag b{color:var(--dm);font-weight:400}
+h1{font:700 clamp(2.4rem,10vw,3.8rem)/1.05 "Space Grotesk",sans-serif;margin:0 0 1.2rem;letter-spacing:-.02em}
+h2{font:700 clamp(1.7rem,7vw,2.3rem)/1.15 "Space Grotesk",sans-serif;margin:0 0 1rem}
+.warm h2,.serif{font-family:"Playfair Display",Georgia,serif;font-weight:500}
+p{margin:0 0 1.1rem;max-width:40ch}
+.dim{color:var(--dm)}
+.btn{font:600 1rem "Space Grotesk",sans-serif;color:var(--d);background:var(--acc);border:0;border-radius:.5rem;padding:.9rem 1.5rem;cursor:pointer;text-decoration:none;display:inline-block;margin-top:1.2rem;margin-right:.6rem;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(93,255,176,.25)}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor;opacity:.7}
+body.warm .btn{font-family:"DM Sans",sans-serif;background:var(--wi);color:var(--w);border-radius:999px}
+body.warm .btn.ghost{background:transparent;color:var(--wi)}
+body.warm .btn:hover{box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.log{background:var(--d2);border:1px solid var(--dl);border-radius:.6rem;padding:1.1rem 1.2rem;font:400 .88rem/1.9 "IBM Plex Mono",monospace;min-height:16.5rem}
+.log div{opacity:0;transform:translateX(-6px);transition:.4s}
+.log div.v{opacity:1;transform:none}
+.log .p{color:var(--acc)} .log .ok{color:var(--acc)} .log .w{color:#ffcf5d}
+.cursor::after{content:"▍";color:var(--acc);animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+.bars{margin:1.4rem 0}
+.bar{display:grid;grid-template-columns:7.5rem 1fr 2.4rem;gap:.7rem;align-items:center;font:400 .8rem "IBM Plex Mono",monospace;margin-bottom:.7rem;color:var(--dm)}
+.bar i{display:block;height:10px;background:var(--dl);border-radius:5px;overflow:hidden}
+.bar i b{display:block;height:100%;width:0;background:var(--acc);border-radius:5px;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.src{font:400 .75rem "IBM Plex Mono",monospace;color:var(--dm)}
+.comp{text-align:center}
+.comp .bigbar{height:6px;background:var(--dl);border-radius:3px;overflow:hidden;margin:1.5rem 0 .8rem}
+.comp .bigbar b{display:block;height:100%;width:0;background:var(--acc)}
+.hero{font-size:5rem;line-height:1;margin:.3rem 0 .8rem}
+.stage{position:relative;height:7.5rem;margin:.5rem 0 1rem;display:flex;align-items:flex-end;gap:1.2rem}
+.turtle{position:relative;font-size:4.2rem;line-height:1}
+.crown{position:absolute;font-size:2rem;top:-1.15rem;left:.2rem;transform:rotate(-14deg)}
+.bear{font-size:4.6rem;line-height:1;animation:wave 3s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes wave{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.note{background:#fff;border:1px solid var(--wl);border-radius:1rem;padding:1rem 1.2rem;color:var(--wm);font-size:.95rem;margin:1rem 0;box-shadow:0 10px 30px rgba(35,32,27,.06)}
+.fine{font-size:.82rem;color:var(--wm);margin-top:1.6rem}
+.code{background:var(--d);color:#d9dde6;border-radius:1rem;padding:0 0 1.2rem;margin:1.2rem 0;box-shadow:0 18px 40px rgba(35,32,27,.18);overflow:hidden}
+.dotsrow{display:flex;align-items:center;gap:.4rem;padding:.8rem 1rem;border-bottom:1px solid var(--dl);font:400 .75rem "IBM Plex Mono",monospace;color:var(--dm)}
+.dotsrow i{width:10px;height:10px;border-radius:50%;background:#ff6b6b}.dotsrow i:nth-child(2){background:#ffcf5d}.dotsrow i:nth-child(3){background:var(--acc)}.dotsrow span{margin-left:.6rem}
+.code pre{margin:0;padding:1.1rem 1.2rem;font:400 .9rem/1.8 "IBM Plex Mono",monospace;overflow-x:auto}
+.k{color:#c792ea}.s{color:var(--acc)}.c{color:var(--dm)}
+.run{font:600 1rem "Space Grotesk",sans-serif;margin:.2rem 0 0 1.2rem;background:var(--acc);color:var(--d);border:0;border-radius:.5rem;padding:.7rem 1.4rem;cursor:pointer;animation:pulse 1.8s ease-in-out infinite}
+.run:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(93,255,176,.18)}}
+.term{font:400 .9rem "IBM Plex Mono",monospace;color:var(--wm);margin:1.4rem 0 .2rem}
+.big{font:700 clamp(3.4rem,16vw,5.5rem)/1.05 "Playfair Display",Georgia,serif;margin-bottom:.8rem}
+.chk{list-style:none;margin:1rem 0 1.2rem;padding:1rem 1.2rem;background:#fff;border:1px solid var(--wl);border-radius:1rem;font-size:.95rem;color:var(--wm);box-shadow:0 10px 30px rgba(35,32,27,.06)}
+.chk b{display:block;font:600 .95rem "DM Sans",sans-serif;color:var(--wi);margin-bottom:.5rem}
+.chk li{padding:.2rem 0}.chk li::before{content:"✓";color:var(--wa);font-weight:700;margin-right:.6rem}
+.bit{position:fixed;pointer-events:none;font:500 1.4rem "IBM Plex Mono",monospace;color:var(--wa);z-index:9}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main{position:relative;z-index:1}
+#glow{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(93,255,176,.14),transparent 70%)}
+body.warm #glow{background:radial-gradient(480px circle at var(--mx,50%) var(--my,30%),rgba(194,65,12,.12),transparent 70%)}
+@keyframes in2{from{opacity:0;filter:blur(10px);transform:scale(.97) translateY(12px)}to{opacity:1;filter:none;transform:none}}
+h1{animation:gl 6s infinite}
+@keyframes gl{0%,90%,100%{text-shadow:none;transform:none}92%{text-shadow:3px 0 #ff2e63,-3px 0 #08f7fe;transform:translateX(3px)}94%{text-shadow:-3px 0 #ff2e63,3px 0 #08f7fe;transform:translateX(-3px)}96%{text-shadow:none;transform:none}}
+body:not(.warm) h2{text-shadow:0 0 30px rgba(93,255,176,.22)}
+body:not(.warm) .btn{animation:pulse 2.2s ease-in-out infinite}
+.log{backdrop-filter:blur(8px);box-shadow:0 0 50px rgba(93,255,176,.07),inset 0 0 0 1px rgba(93,255,176,.06)}
+.bar i b{box-shadow:0 0 14px var(--acc)}
+.code{transition:transform .2s ease-out;will-change:transform}
+#tabs{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;overflow-x:auto;background:var(--d2);border-bottom:1px solid var(--dl);padding-top:env(safe-area-inset-top,0px);font:400 .75rem "IBM Plex Mono",monospace;scrollbar-width:none;transition:background 1.6s}
+#tabs span{padding:.65rem 1rem;color:var(--dm);white-space:nowrap;border-right:1px solid var(--dl)}
+#tabs span.on{color:var(--dt);background:var(--d);box-shadow:inset 0 2px var(--acc)}
+body.warm #tabs{background:#ece6d8;border-color:var(--wl)}body.warm #tabs span{color:var(--wm);border-color:var(--wl)}body.warm #tabs span.on{color:var(--wi);background:var(--w);box-shadow:inset 0 2px var(--wa)}
+#status{position:fixed;bottom:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;gap:1rem;padding:.35rem .9rem calc(.35rem + env(safe-area-inset-bottom,0px));background:var(--acc);color:var(--d);font:500 .72rem "IBM Plex Mono",monospace;transition:background 1.6s,color 1.6s}
+body.warm #status{background:var(--wa);color:#fff}
+main{padding:4.2rem 1.4rem 3.2rem}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas><div id="glow" aria-hidden="true"></div><div id="tabs" aria-hidden="true"></div>
+<main>
+
+<section id="s0" class="on">
+<div class="tag">PROJECT 001 <b>/ status: running / risk: only embarrassment</b></div>
+<h1>An Interesting<br>Discovery</h1>
+<p class="dim">A short research briefing for one developer, written by another. About a minute, no sign-up, no installs.</p>
+<button class="btn" data-go="1">Begin briefing</button>
+</section>
+
+<section id="s1">
+<div class="tag">01 <b>/ hypothesis</b></div>
+<h2>Most hellos never get sent.</h2>
+<p>This is an attempt to fix exactly one of them. Preliminary data:</p>
+<div class="bars" id="bars">
+<div class="bar"><span>hellos planned</span><i><b data-w="92"></b></i><span>92</span></div>
+<div class="bar"><span>hellos drafted</span><i><b data-w="61"></b></i><span>61</span></div>
+<div class="bar"><span>hellos deleted</span><i><b data-w="58"></b></i><span>58</span></div>
+<div class="bar"><span>hellos sent</span><i><b data-w="3"></b></i><span>3</span></div>
+</div>
+<div class="src">source: trust me, bro (n = 1 developer)</div>
+<button class="btn" data-go="2">Open experiment log</button>
+</section>
+
+<section id="s2">
+<div class="tag">02 <b>/ experiment log</b></div>
+<div class="log" id="log"></div>
+<button class="btn" id="b2" data-go="3" hidden>Run build</button>
+</section>
+
+<section id="s3" class="comp">
+<div class="tag">03 <b>/ running tests</b></div>
+<div class="log" style="min-height:0;text-align:left" id="comp"></div>
+<div class="bigbar"><b id="pb"></b></div>
+<div class="src" id="pct">0%</div>
+</section>
+
+<section id="s4">
+<div class="serif" style="color:var(--wa);font-size:1rem;margin-bottom:1rem">Conclusion</div>
+<h2 style="font-size:clamp(2rem,8vw,2.9rem)">It was just a hello all along.</h2>
+<p>One developer to another: this is the long way of saying hi. I could have sent a normal message, but where is the fun in that?</p>
+<p class="note">No expectations, no deadline, no wrong answer. Reply, ignore it, or just enjoy the ride.</p>
+<button class="btn" data-go="5">Read the final note</button>
+</section>
+
+<section id="s5">
+<div class="serif" style="color:var(--wa);margin-bottom:1rem">Final step</div>
+<h2 style="font-size:clamp(2rem,8vw,2.9rem)">One last thing to run.</h2>
+<div class="code" id="codebox">
+<div class="dotsrow"><i></i><i></i><i></i><span>hello.js</span></div>
+<pre><span class="k">const</span> hello = () =&gt; {
+  <span class="k">return</span> <span class="s">"Hi 👋"</span>;
+};
+
+hello(); <span class="c">// nothing happens until you run it</span></pre>
+<button class="run" id="run">▶ Run</button>
+</div>
+<div id="out" hidden>
+<div class="term">&gt; hello()</div>
+<div class="big">Hi 👋</div>
+<p class="serif" style="font-style:italic;font-size:1.2rem">Exit code 0. Zero errors, zero pressure.</p>
+<ul class="chk"><b>Introvert-friendly build, certified</b>
+<li>No phone call required</li>
+<li>No small talk, no “we should hang out sometime”</li>
+<li>Replies valid within 3 to 5 business days</li>
+<li>Cancelling plans: not applicable</li>
+<li>Social battery used: 2%</li>
+</ul>
+<p>Thank you for reading all the way to the end. I hope this brought a little smile to your day.</p>
+<p class="serif" style="font-style:italic;font-size:1.2rem">Wishing you good music, good chai and good days ahead. ✨</p>
+<p class="mono" style="font-size:.85rem;color:var(--wm)">P.S. Open DevTools. I left you something. 🐛</p>
+<button class="btn ghost" id="replay">Replay</button>
+<div class="fine">Nothing on this page tracks you or sends anything.</div>
+</div>
+</section>
+
+</main>
+<div id="status" aria-hidden="true"><span id="stl"></span><span id="str"></span></div>
+<script>
+
+var $ = function(i){return document.getElementById(i)}, secs = document.querySelectorAll('section'), timers = [];
+function later(fn,ms){timers.push(setTimeout(fn,ms))}
+function go(n){
+  timers.forEach(clearTimeout); timers = [];
+  secs.forEach(function(s,i){s.classList.toggle('on',i===n)});
+  window.scrollTo(0,0);
+  if(n===1) later(function(){document.querySelectorAll('#bars b').forEach(function(b){b.style.width=b.dataset.w+'%'})},300);
+  if(n===2) runLog();
+  if(n===3) runCompile();
+  if(n===4) document.body.classList.add('warm');
+  if(n===5){$('out').hidden=true;$('codebox').style.display='';}
+  chrome(n);
+}
+document.querySelectorAll('[data-go]').forEach(function(b){b.onclick=function(){go(+b.dataset.go)}});
+$('run').onclick = function(){
+  $('codebox').style.display = 'none'; $('out').hidden = false;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var sy = ['{','}','</>',';','()','=>','👋'];
+  for(var i=0;i<28;i++){
+    var b = document.createElement('span'); b.className = 'bit'; b.textContent = sy[i%sy.length];
+    b.style.left = (10+Math.random()*80)+'vw'; b.style.top = '60vh'; document.body.appendChild(b);
+    var a = b.animate([{transform:'translateY(0) rotate(0)',opacity:1},{transform:'translateY('+(-(200+Math.random()*320))+'px) rotate('+(Math.random()*120-60)+'deg)',opacity:0}],{duration:1600+Math.random()*1200,easing:'cubic-bezier(.2,.7,.3,1)'});
+    a.onfinish = (function(el){return function(){el.remove()}})(b);
+  }
+};
+$('replay').onclick = function(){
+  document.body.classList.remove('warm');
+  document.querySelectorAll('#bars b').forEach(function(b){b.style.width=0});
+  go(0);
+};
+
+var logLines = [
+ ['p','$ git init hello'],
+ ['','14 drafts written, 13 deleted'],
+ ['w','warning: a normal message felt too simple'],
+ ['','decision: over-engineer it instead'],
+ ['w','bug found: cannot say it directly'],
+ ['ok','fix: wrote a whole website, problem solved'],
+ ['ok','feature added: no phone call required'],
+ ['ok','feature added: zero small talk, straight to hello'],
+ ['','$ git commit -m "hello (final_final_v2)"']
+];
+function runLog(){
+  var el = $('log'); el.innerHTML = ''; $('b2').hidden = true;
+  logLines.forEach(function(l,i){
+    later(function(){
+      var d = document.createElement('div'); d.className = l[0]; d.textContent = '> ' + l[1];
+      el.appendChild(d); requestAnimationFrame(function(){d.classList.add('v')});
+      if(i===logLines.length-1) $('b2').hidden = false;
+    }, 500 + i*750);
+  });
+}
+function runCompile(){
+  var c = $('comp'), steps = ['$ npm test','✓ should say hello (12ms)','✓ no phone call required (0ms)','✓ introvert-friendly, 2% battery (3ms)','✓ replies valid in 3 to 5 business days','Tests: 4 passed, 0 failed'];
+  c.innerHTML = ''; $('pb').style.width = '0';
+  steps.forEach(function(s,i){later(function(){var d=document.createElement('div');d.textContent='> '+s;c.appendChild(d)},i*450)});
+  var p = 0, t = setInterval(function(){
+    p = Math.min(100, p + 4); $('pb').style.width = p+'%'; $('pct').textContent = p+'%';
+    if(p===100){clearInterval(t); later(function(){go(4)},500)}
+  }, 100);
+  timers.push(t);
+}
+function chrome(n){
+  var f = ['index.js','hypothesis.md','experiment.log','tests.spec.js','conclusion.md','hello.js'], t = $('tabs');
+  t.innerHTML = '';
+  f.forEach(function(x,i){var s = document.createElement('span'); s.textContent = x; if(i===n) s.className = 'on'; t.appendChild(s); if(i===n) t.scrollLeft = Math.max(0, s.offsetLeft-40);});
+  $('stl').textContent = '⎇ main   ✓ 0 errors   ⚠ 0 warnings';
+  $('str').textContent = 'scene '+(n+1)+'/6   UTF-8   Hello 👋';
+}
+chrome(0);
+function burst(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var sy = ['{','}','</>',';','()','=>','👋'];
+  for(var i=0;i<28;i++){
+    var b = document.createElement('span'); b.className = 'bit'; b.textContent = sy[i%sy.length];
+    b.style.left = (10+Math.random()*80)+'vw'; b.style.top = '60vh'; document.body.appendChild(b);
+    var a = b.animate([{transform:'translateY(0)',opacity:1},{transform:'translateY('+(-(200+Math.random()*320))+'px)',opacity:0}],{duration:1600+Math.random()*1200,easing:'cubic-bezier(.2,.7,.3,1)'});
+    a.onfinish = (function(el){return function(){el.remove()}})(b);
+  }
+}
+window.hello = function(){burst(); return 'Hi 👋 (this one is just for you)';};
+console.log('%c Hello, fellow developer 👋 ','font:700 16px monospace;color:#5dffb0;background:#101114;padding:8px 12px;border-radius:6px');
+console.log('%cYou opened DevTools. Of course you did. Respect.\n// type hello() here, or just type the word hello anywhere on the page','color:#7d8494;font:12px monospace');
+var typed = '';
+addEventListener('keydown',function(e){typed = (typed+e.key).slice(-5).toLowerCase(); if(typed==='hello') burst();});
+(function(){
+  var cv = $('bg'), cx = cv.getContext('2d'), W, H, P = [], ch = '{}();=>01$#'.split(''), still = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function size(){
+    var r = devicePixelRatio || 1; W = innerWidth; H = innerHeight;
+    cv.width = W*r; cv.height = H*r; cx.setTransform(r,0,0,r,0,0); P = [];
+    for(var i=0;i<Math.round(W/24);i++) P.push({x:i*24+Math.random()*10, y:Math.random()*H, v:.4+Math.random()*1.3, c:ch[Math.random()*ch.length|0]});
+  }
+  function draw(){
+    cx.clearRect(0,0,W,H); var w = document.body.classList.contains('warm');
+    cx.font = '14px "IBM Plex Mono",monospace';
+    P.forEach(function(p){
+      if(!still){ if(w){p.y -= p.v*.5; if(p.y<-20) p.y = H+20;} else {p.y += p.v; if(p.y>H+20) p.y = -20;} }
+      cx.fillStyle = w ? 'rgba(194,65,12,'+(.08+p.v*.05)+')' : 'rgba(93,255,176,'+(.07+p.v*.1)+')';
+      cx.fillText(p.c, p.x, p.y);
+    });
+    if(!still) requestAnimationFrame(draw);
+  }
+  size(); draw(); addEventListener('resize', function(){size(); if(still) draw();});
+  addEventListener('pointermove', function(e){ var g = $('glow'); g.style.setProperty('--mx', e.clientX+'px'); g.style.setProperty('--my', e.clientY+'px'); });
+  var box = $('codebox');
+  box.addEventListener('pointermove', function(e){
+    if(still) return; var r = box.getBoundingClientRect();
+    var x = (e.clientX-r.left)/r.width-.5, y = (e.clientY-r.top)/r.height-.5;
+    box.style.transform = 'perspective(800px) rotateY('+(x*10)+'deg) rotateX('+(-y*10)+'deg)';
+  });
+  box.addEventListener('pointerleave', function(){box.style.transform = '';});
+})();
+</script>
+</body>
+</html>
