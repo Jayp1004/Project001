@@ -96,6 +96,10 @@ body.warm #tabs{background:#ece6d8;border-color:var(--wl)}body.warm #tabs span{c
 #status{position:fixed;bottom:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;gap:1rem;padding:.35rem .9rem calc(.35rem + env(safe-area-inset-bottom,0px));background:var(--acc);color:var(--d);font:500 .72rem "IBM Plex Mono",monospace;transition:background 1.6s,color 1.6s}
 body.warm #status{background:var(--wa);color:#fff}
 main{padding:4.2rem 1.4rem 3.2rem}
+.alert{display:flex;flex-direction:column;gap:.2rem;margin:1.2rem 0 .4rem;padding:.9rem 1.1rem;border:1.5px solid #ffcf5d;border-radius:.5rem;background:repeating-linear-gradient(135deg,rgba(255,207,93,.1) 0 10px,transparent 10px 20px);font:400 .82rem/1.5 "IBM Plex Mono",monospace;color:#ffcf5d;max-width:28rem;animation:blink 2.4s ease-in-out infinite}
+.alert b{font-weight:500;letter-spacing:.08em}
+.alert span{color:var(--dt)}
+@keyframes blink{50%{border-color:rgba(255,207,93,.3)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -107,6 +111,7 @@ main{padding:4.2rem 1.4rem 3.2rem}
 <div class="tag">PROJECT 001 <b>/ status: running / risk: only embarrassment</b></div>
 <h1>An Interesting<br>Discovery</h1>
 <p class="dim">A short research briefing for one developer, written by another. About a minute, no sign-up, no installs.</p>
+<div class="alert" role="note"><b>⚠ INTROVERT ALERT</b><span>This page contains: 0 phone calls, 0 small talk, 1 polite hello. Proceed at your own pace.</span></div>
 <button class="btn" data-go="1">Begin briefing</button>
 </section>
 
